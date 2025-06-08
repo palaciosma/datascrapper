@@ -33,6 +33,8 @@ Process a document using the specified job type.
     }
   ]
 }
+```
+
 job_type (string): The type of job to perform (extract, analyze, etc.)
 
 file_name (string): The name of the file to process
@@ -42,15 +44,15 @@ file_content (string): Raw or encoded content of the file
 extraction_schema (optional): JSON schema defining fields to extract
 
 🟢 Response
-json
-Copiar
-Editar
+```json
 {
   "status": "success",
   "result": {
     "Company Name": "Acme Corp"
   }
 }
+```
+
 status: "success" or "error"
 
 result: Output of the job (extracted fields, analysis results, etc.)
