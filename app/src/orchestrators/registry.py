@@ -4,6 +4,6 @@ from .analyzer import deepseek_analyzer
 
 
 PROCESSOR_REGISTRY = {
-    "extract": openai_ext,
+    "extract": deepseek_ext,
     "analyze": deepseek_analyzer
 }

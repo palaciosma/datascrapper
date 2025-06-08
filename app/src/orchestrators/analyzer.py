@@ -1,6 +1,6 @@
 # Internal imports
 from .base import BaseProcessor
-from app.src.services.openai import deepseek_analysis, compose_prompt
+from app.src.services.openai import deepseek_response, compose_prompt
 from app.src.services.file_operations import load_txt_file
 from app.src.config import ANALYSIS_SYSTEM_PROMPT_PATH
 
@@ -17,8 +17,8 @@ class deepseek_analyzer(BaseProcessor):
         system_message = load_txt_file(ANALYSIS_SYSTEM_PROMPT_PATH)
         prompt = compose_prompt(extracted_text, system_message)
 
-        extracted_fields = deepseek_analysis(prompt)
+        response = deepseek_response(prompt)
 
-        return extracted_fields
+        return response
     
 

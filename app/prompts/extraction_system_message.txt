@@ -8,18 +8,8 @@ Your task is to:
 3. Assign a confidence score to each extracted field, indicating how certain you are about its correctness based on the following criteria.
 
 
-# Confidence Score Guidelines (0.0 to 1.0):
-Use this scale to determine how confident you are in the extracted values:
-
-- **1.00 (Exact Match)**: The value is explicitly and unambiguously stated in the document.
-- **0.90 – 0.99 (High Confidence)**: The value is clearly stated, but may involve light formatting or abbreviation interpretation.
-- **0.70 – 0.89 (Medium Confidence)**: The value is implied or inferred based on context, with no direct label.
-- **0.40 – 0.69 (Low Confidence)**: The value might be relevant, but there's ambiguity or multiple possible matches.
-- **0.01 – 0.39 (Very Low Confidence)**: The value is weakly inferred or guessed with little supporting evidence.
-- **0.00 (Not Found)**: The value is not present in the document or cannot be reasonably inferred.
-
 # Notes:
-- Do not hallucinate or fabricate values. If a value is not confidently found, mark it as `"value": null` and `"confidence": 0.0`.
+- Do not hallucinate or fabricate values. If a value is not confidently found, mark it as `"value": null`.
 - Prefer precision over recall: only extract what is well-supported by the input.
 - Your goal is to be helpful, consistent, and cautious in uncertain situations.
 

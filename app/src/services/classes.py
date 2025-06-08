@@ -11,7 +11,6 @@ class ExtractedValue(BaseModel):
 def build_data_extraction_model(schema: list[dict]) -> Type[BaseModel]:
     """
     Dynamically builds a Pydantic model class with fields based on user schema.
-    Does NOT inherit from ExtractedValue.
     """
     python_type_map = {
         "str": str,
@@ -39,3 +38,36 @@ def build_data_extraction_model(schema: list[dict]) -> Type[BaseModel]:
 
     except Exception as e:
         raise ValueError(f"Failed to build data extraction model: {str(e)}")
+    
+
+
+def build_data_validation_model(schema: list[dict]) -> Type[BaseModel]:
+    """
+    Dynamically builds a Pydantic model class with fields based on user schema.
+    """
+    python_type_map = {
+        "str": str,
+        "int": int,
+        "float": float,
+        "bool": bool
+    }
+
+    try:
+        fields = {}
+        for item in schema:
+            field_name = item["value_name"]
+            field_type_str = "float"
+            field_type = python_type_map.get(field_type_str, str)
+            description = f"Confidence score for {field_name}"
+
+            fields[field_name] = (field_type, Field(..., description=description))
+
+        DataValidationModel = create_model(
+            "DataValidationModel",
+            **fields
+        )
+
+        return DataValidationModel
+
+    except Exception as e:
+        raise ValueError(f"Failed to build data validation model: {str(e)}")
